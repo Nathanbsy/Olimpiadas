@@ -1,0 +1,33 @@
+﻿@model List<ExemploProjeto.Models.Atleta>
+@{
+    var cidade = ViewBag.Cidade;
+}
+
+<h2>Atletas Nascidos em @cidade</h2>
+
+@if (!Model.Any())
+{
+    <p>Nenhum atleta encontrado.</p>
+}
+else
+{
+    <table border="1">
+        <tr>
+            <th>Nome</th>
+            <th>Data de Nascimento</th>
+            <th>Sexo</th>
+            <th>Modalidade</th>
+        </tr>
+        @foreach (var a in Model)
+        {
+            <tr>
+                <td><a href="/Edicao/Detalhes/@a.CodAtleta">@a.NomeAtleta</a></td>
+                <td>@a.DataNascimento</td>
+                <td>@a.Sexo</td>
+                <td><a asp-action="Atletas" asp-controller="Modalidade" asp-route-id="@a.CodModalidade">@a.Modalidade</a></td>
+            </tr>
+        }
+    </table>
+}
+
+<a href="/Edicao/Index">Voltar</a>
