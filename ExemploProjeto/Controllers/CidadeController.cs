@@ -83,13 +83,11 @@ namespace ExemploProjeto.Controllers
             using (var conn = db.GetConnection())
             {
                 string sql = @"
-                SELECT a.codAtleta, a.nomeAtleta, a.dataNascimento, a.sexo,
-                       a.codModalidade, m.nomeModalidade, cidades.nomeCidade, e.codEstado, e.nomeEstado
-                FROM atletas a
-                JOIN estados e ON e.codEstado = e.codEstado
-                JOIN modalidades m ON m.codModalidade = a.codModalidade
-                JOIN cidades ON cidades.codCidade = a.codCidade
-                WHERE e.nomeEstado = @estado";
+                SELECT atletas.codAtleta, atletas.nomeAtleta, atletas.dataNascimento, atletas.sexo, atletas.altura, atletas.peso, atletas.codModalidade, modalidades.nomeModalidade, cidades.nomeCidade, estados.codEstado, estados.nomeEstado FROM atletas
+                JOIN estados ON estados.codEstado = estados.codEstado
+                JOIN modalidades ON modalidades.codModalidade = atletas.codModalidade
+                JOIN cidades ON cidades.codCidade = atletas.codCidade
+                WHERE estados.nomeEstado = @estado;";
 
                 var cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@estado", estado);

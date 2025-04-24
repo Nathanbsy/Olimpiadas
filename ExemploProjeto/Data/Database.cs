@@ -4,7 +4,7 @@ namespace ExemploProjeto.Data
 {
     public class Database
     {
-        private readonly string connectionString = "server=localhost;port=3306;database=dbpesquisaOlimpiadas;user=root;password=12345678;";
+        private readonly string connectionString = "server=localhost;port=3306;database=dbpesquisaOlimpiadas;user=EU;password=S4r!nh4;";
 
         public MySqlConnection GetConnection()
         {

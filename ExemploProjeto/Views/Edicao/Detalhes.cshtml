@@ -14,7 +14,7 @@
             @Model.CidadeNascimento
     </a>
     /
-    <a href="/Cidade/Estado/@Model.EstadoNascimento">
+    <a asp-action="Estado" asp-controller="Cidade" asp-route-estado="@Model.EstadoNascimento">
             @Model.EstadoNascimento
     </a>
 </p>
